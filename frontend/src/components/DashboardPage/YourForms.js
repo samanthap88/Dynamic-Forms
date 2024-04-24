@@ -20,10 +20,10 @@ function YourForms({setActiveButton}) {
     const goToForm = (id) => {
         navigate(`/editForm/${id}/${username}`);
     }
-
+    
     useEffect(() => {
         if (username) {
-            axios.get(`http://localhost:4000/forms/username/${username}`)
+            axios.get(`${process.env.REACT_APP_API_URL}/forms/username/${username}`)
             .then((response) => {
                 setForms(response.data)
             })
@@ -31,7 +31,7 @@ function YourForms({setActiveButton}) {
                 console.error('Error fetching forms:', error);
             });
         } else {
-            axios.get(`http://localhost:4000/forms/username/guest`)
+            axios.get(`${process.env.REACT_APP_API_URL}/forms/username/guest`)
             .then((response) => {
                 setForms(response.data)
             })

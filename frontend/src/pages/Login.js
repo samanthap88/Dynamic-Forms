@@ -19,7 +19,7 @@ export default function Login() {
     const handleSignUpSubmit = async (e) => {
         e.preventDefault(); 
         try {
-            const response = await axios.post('http://localhost:4000/signup', { email, password });
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, { email, password });
             console.log("response") 
             const userId = response.data.userId; 
             if (userId) {
@@ -46,7 +46,7 @@ export default function Login() {
     const handleLoginSubmit = async (e) => {
         e.preventDefault() 
         try {
-            const response = await axios.post('http://localhost:4000/login', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, {
               email,
               password
             });

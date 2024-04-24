@@ -10,7 +10,7 @@ export default function Responses() {
     const { id } = useParams()
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/forms/id/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/forms/id/${id}`)
         .then((response) => {
             setForm(response.data)
         })
@@ -20,7 +20,7 @@ export default function Responses() {
     }, [id]) 
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/forms/response/formId/${id}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/forms/response/formId/${id}`)
         .then((response) => {
             setResponses(response.data)
             console.log(response.data)

@@ -17,7 +17,7 @@ export default function Header ({username}) {
     useEffect(() => {
         
         
-        axios.get(`http://localhost:4000/users/getUserByEmail/${username}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/users/getUserByEmail/${username}`)
         .then((response) => {
             setName(response.data.userId)
             
@@ -36,7 +36,7 @@ export default function Header ({username}) {
     const createNewForm = () => {
         console.log("this has been clicked")
         if (username) {
-            axios.post("http://localhost:4000/forms", {
+            axios.post(`${process.env.REACT_APP_API_URL}/forms`, {
               title: "",
               creator: username, 
               questions: [],
@@ -50,7 +50,7 @@ export default function Header ({username}) {
             });
 
         } else {
-            axios.post("http://localhost:4000/forms", {
+            axios.post(`${process.env.REACT_APP_API_URL}/forms`, {
               title: "",
               creator: "guest", 
               questions: [],

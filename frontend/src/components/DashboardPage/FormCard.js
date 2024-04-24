@@ -32,7 +32,7 @@ export default function FormCard({onClick, formTitle, formId, setForms, forms, q
     
     const deleteForm = () => {
         axios
-            .delete(`http://localhost:4000/forms/${formId}`)
+            .delete(`${process.env.REACT_APP_API_URL}/forms/${formId}`)
             .then(() => {
                 setForms(forms.filter(form => form._id !== formId))
             })

@@ -23,7 +23,7 @@ function FormTakerView() {
         })) 
         console.log(answers) 
         console.log("this is answers")
-        axios.post(`http://localhost:4000/forms/response/${formId}`, { userId, answers })
+        axios.post(`${process.env.REACT_APP_API_URL}/forms/response/${formId}`, { userId, answers })
         .then((response) => {
             console.log('Form submitted successfully:' , response.data) 
         })
@@ -33,7 +33,7 @@ function FormTakerView() {
     }
  
     useEffect(() => {
-        axios.get(`http://localhost:4000/forms/id/${formId}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/forms/id/${formId}`)
         .then((response) => {
           setTitle(response.data.title) 
           setQuestions(response.data.questions)

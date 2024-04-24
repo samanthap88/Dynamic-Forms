@@ -15,7 +15,7 @@ export default function Responses() {
 
     useEffect(() => {
         if (username) {
-            axios.get(`http://localhost:4000/forms/username/${username}`)
+            axios.get(`${process.env.REACT_APP_API_URL}/forms/username/${username}`)
                 .then((response) => {
                     setForms(response.data);
                 })
@@ -23,7 +23,7 @@ export default function Responses() {
                     console.error('Error fetching forms:', error);
                 });
         } else {
-            axios.get(`http://localhost:4000/forms/username/guest`)
+            axios.get(`${process.env.REACT_APP_API_URL}/forms/username/guest`)
                 .then((response) => {
                     setForms(response.data);
                 })

@@ -23,7 +23,7 @@ function DropdownMenu({formId, userId}) {
   const navigate=useNavigate() 
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/forms/id/${formId}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/forms/id/${formId}`)
     .then((response) => {
       
       setQuestions(response.data.questions)
@@ -83,7 +83,7 @@ function DropdownMenu({formId, userId}) {
       data.title = "Untitled form"
     }
     
-    axios.put(`http://localhost:4000/forms/id/${formId}`, data)
+    axios.put(`${process.env.REACT_APP_API_URL}/forms/id/${formId}`, data)
     .then(() => {
       if (userId) {
         navigate(`/${userId}`)
@@ -127,7 +127,6 @@ function DropdownMenu({formId, userId}) {
           <p>Add Questions</p>
           <QuestionsButton text="Multiple Choice" onClick={() => handleOptionClick('Multiple Choice', questions.length)} />
           <QuestionsButton text="Text Response" onClick={() => handleOptionClick('Text Response', questions.length)} />
-          <QuestionsButton text="Text" onClick={() => handleOptionClick('Text', questions.length)} />
           <QuestionsButton text="Checkboxes" onClick={() => handleOptionClick('Checkboxes', questions.length)} />
         </div>
 

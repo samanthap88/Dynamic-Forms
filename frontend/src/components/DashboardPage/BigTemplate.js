@@ -113,7 +113,7 @@ export default function BigTemplate ({title}) {
             console.log(questions) 
             console.log(username) 
             console.log(title)
-            axios.post("http://localhost:4000/forms", {
+            axios.post(`${process.env.REACT_APP_API_URL}/forms`, {
             title: title,
             creator: username, 
             questions: questions,
@@ -127,7 +127,7 @@ export default function BigTemplate ({title}) {
             });
 
         } else {
-            axios.post("http://localhost:4000/forms", {
+            axios.post(`${process.env.REACT_APP_API_URL}/forms`, {
             title: title,
             creator: "guest", 
             questions: questions,
