@@ -16,6 +16,8 @@ dotenv.config() ;
 app.use(express.json());
 
 
+
+
 app.get("/", (req, res) => {
   res.send("Hello App API") ; 
 })
@@ -32,7 +34,6 @@ app.use(
   const port = process.env.PORT
   //const port = 3000
 
-// posting to question 
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser:true, 

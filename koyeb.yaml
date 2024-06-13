@@ -1,0 +1,9 @@
+version: "1.0"
+
+services:
+  - name: my-backend-service
+    image: node:14
+    build:
+      context: ./backend
+    ports:
+      - 8080
