@@ -33,13 +33,17 @@ export default function Responses() {
     useEffect(() => {
         const newTableData = {};
         responses.forEach((response) => {
-            newTableData[response.userId] = {};
+            if (!newTableData[response.userId]) {
+                newTableData[response.userId] = {};
+            }
             response.answers.forEach((answer) => {
+                console.log(answer)
                 newTableData[response.userId][answer.question] = answer.response;
             });
         });
         setTableData(newTableData);
     }, [responses]);
+    
 
     const goToForm = () => {
         window.history.back();

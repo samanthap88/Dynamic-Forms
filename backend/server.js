@@ -3,19 +3,22 @@ import express from 'express'
 import {PORT, mongoDBURL} from './config.js'
 import mongoose from 'mongoose'
 import cors from 'cors';
-import {Question} from './models/Questions.js'
 import {Form} from './models/Forms.js'
 import { User } from './models/Users.js';
 import {Response} from './models/Responses.js'
 import { Template } from './models/Forms.js';
+import dotenv from "dotenv" ; 
 
 import bcrypt from 'bcrypt'
 
 const app = express();
+dotenv.config() ; 
 app.use(express.json());
 
 
-//app.use(cors());
+app.get("/", (req, res) => {
+  res.send("Hello App API") ; 
+})
 
 app.use(
      cors({
@@ -26,14 +29,19 @@ app.use(
    );
 
 
+  const port = process.env.PORT
+  //const port = 3000
 
 // posting to question 
 mongoose
-  .connect(mongoDBURL) 
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser:true, 
+    useUnifiedTopology:true 
+  }) 
   .then(() => {
     console.log('App connected to database') 
-    app.listen(4000, () => {
-      console.log("connection to db & listening on port", 4000)
+    app.listen(port, () => {
+      console.log("connection to db & listening on port", port)
     })
   })
   .catch((error) => {

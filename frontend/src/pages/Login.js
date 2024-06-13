@@ -43,6 +43,8 @@ export default function Login() {
         
     }
 
+
+    console.log('API URL:', process.env.REACT_APP_API_URL)
     const handleLoginSubmit = async (e) => {
         e.preventDefault() 
         try {
