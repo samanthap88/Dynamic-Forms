@@ -15,7 +15,7 @@ const app = express();
 dotenv.config() ; 
 app.use(express.json());
 
-const port = 4000
+const port = process.env.PORT 
 
 
 app.get("/", (req, res) => {
@@ -23,7 +23,9 @@ app.get("/", (req, res) => {
 })
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://forms-gwa0m2zte-samanthap88s-projects.vercel.app'],
+  origin: ['http://localhost:3000', 'https://forms-gwa0m2zte-samanthap88s-projects.vercel.app', 
+    'dynamic-forms-c4z950fo1-samanthap88s-projects.vercel.app'
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 };
@@ -33,10 +35,7 @@ app.use(cors(corsOptions));
 // Handle preflight requests
 app.options('*', cors(corsOptions));
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser:true, 
-    useUnifiedTopology:true 
-  }) 
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.log('App connected to database') 
     app.listen(port, () => {

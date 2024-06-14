@@ -15,6 +15,7 @@ function YourForms({setActiveButton}) {
         setActiveButton("Templates")
     }
   
+    console.log("this is happening ")
 
 
     const goToForm = (id) => {
@@ -25,6 +26,7 @@ function YourForms({setActiveButton}) {
         if (username) {
             axios.get(`${process.env.REACT_APP_API_URL}/forms/username/${username}`)
             .then((response) => {
+                console.log("i got the forms")
                 setForms(response.data)
             })
             .catch((error) => {
