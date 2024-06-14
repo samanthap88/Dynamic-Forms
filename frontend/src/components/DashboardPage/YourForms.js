@@ -20,7 +20,7 @@ function YourForms({setActiveButton}) {
     const goToForm = (id) => {
         navigate(`/editForm/${id}/${username}`);
     }
-    
+    console.log(`${process.env.REACT_APP_API_URL}`)
     useEffect(() => {
         if (username) {
             axios.get(`${process.env.REACT_APP_API_URL}/forms/username/${username}`)

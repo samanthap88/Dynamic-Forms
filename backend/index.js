@@ -15,25 +15,23 @@ const app = express();
 dotenv.config() ; 
 app.use(express.json());
 
-
+const port = 4000
 
 
 app.get("/", (req, res) => {
   res.send("Hello App API") ; 
 })
 
-app.use(
-     cors({
-       origin: 'http://localhost:3000',
-       methods: ['GET', 'POST', 'PUT', 'DELETE'],
-       allowedHeaders: ['Content-Type'],
-     })
-   );
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://forms-gwa0m2zte-samanthap88s-projects.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+};
 
+app.use(cors(corsOptions));
 
-  const port = process.env.PORT
-  //const port = 3000
-
+// Handle preflight requests
+app.options('*', cors(corsOptions));
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser:true, 
@@ -48,7 +46,6 @@ mongoose
   .catch((error) => {
     console.log(error) 
   })
-
 
 app.post('/forms', async (req, res) => {
       try {

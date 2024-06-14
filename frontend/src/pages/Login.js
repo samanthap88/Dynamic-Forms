@@ -20,7 +20,6 @@ export default function Login() {
         e.preventDefault(); 
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, { email, password });
-            console.log("response") 
             const userId = response.data.userId; 
             if (userId) {
                 console.log("Login successful");
