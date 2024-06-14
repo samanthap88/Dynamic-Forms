@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://forms-gwa0m2zte-samanthap88s-projects.vercel.app', 
-    'https://dynamic-forms-4yyjvsy9p-samanthap88s-projects.vercel.app', 'https://forms-two-taupe.vercel.app'
+    'https://dynamic-forms-8f5t.vercel.app', 'https://forms-two-taupe.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
