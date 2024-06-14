@@ -99,7 +99,7 @@ function DropdownMenu({formId, userId}) {
   };
 
   const generateLink = () => {
-    const link = `http://localhost:3000/form/${formId}`
+    const link = `https://dynamic-forms-8f5t.vercel.app/form/${formId}`
     setShareLink(link) 
     setShowLink(!showLink);
   }
