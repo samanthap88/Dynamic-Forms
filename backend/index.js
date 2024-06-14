@@ -24,13 +24,15 @@ app.get("/", (req, res) => {
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://forms-gwa0m2zte-samanthap88s-projects.vercel.app', 
-    'dynamic-forms-c4z950fo1-samanthap88s-projects.vercel.app'
+    'https://dynamic-forms-jn7uqr0gc-samanthap88s-projects.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 };
 
 app.use(cors(corsOptions));
+
+
 
 // Handle preflight requests
 app.options('*', cors(corsOptions));
