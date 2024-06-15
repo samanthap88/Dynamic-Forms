@@ -23,7 +23,7 @@ export default function Responses() {
         axios.get(`${process.env.REACT_APP_API_URL}/forms/response/formId/${id}`)
         .then((response) => {
             setResponses(response.data)
-            console.log(response.data)
+
         })
         .catch((error) => {
             console.error("error fetching responses: ", error) 
@@ -33,12 +33,14 @@ export default function Responses() {
     useEffect(() => {
         const newTableData = {};
         responses.forEach((response) => {
-            if (!newTableData[response.userId]) {
-                newTableData[response.userId] = {};
+            if (!newTableData[response._id]) {
+                console.log(response._id)
+                newTableData[response._id] = {};
             }
             response.answers.forEach((answer) => {
-                console.log(answer)
-                newTableData[response.userId][answer.question] = answer.response;
+                
+                newTableData[response._id][answer.question] = answer.response;
+                console.log(newTableData)
             });
         });
         setTableData(newTableData);
@@ -73,10 +75,10 @@ export default function Responses() {
                             <tbody>
                                 {responses.map((response, responseIndex) => (
                                     <tr key={responseIndex}>
-                                        <td className="border-b-2  p-2">{response.userId}</td>
+                                        
                                         {form.questions.map((question, questionIndex) => (
                                             <td key={questionIndex} className="border-b-2  p-2">
-                                                {tableData[response.userId] && tableData[response.userId][question.text]}
+                                                {tableData[response._id] && tableData[response._id][question.text]}
                                             </td>
                                         ))}
                                     </tr>
